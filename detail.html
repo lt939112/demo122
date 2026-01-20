@@ -1,0 +1,128 @@
+<!doctype html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Chi tiết sản phẩm</title>
+    <link rel="stylesheet" href="../style.css" />
+  </head>
+  <body>
+    <header class="header-container">
+      <div class="logo" onclick="location.href = 'index.html'">⚡ SHOE-DEV</div>
+    </header>
+
+    <main>
+      <section class="content" id="productDetailContainer">
+<script src="script.js"></script>
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const params = new URLSearchParams(window.location.search);
+    const productId = parseInt(params.get("id"));
+
+    const product = shoes.find((s) => s.id === productId);
+    const container = document.getElementById("productDetailContainer");
+
+    if (product && container) {
+      container.innerHTML = `
+        <div style="display: flex; gap: 40px; padding: 20px; flex-wrap: wrap; align-items: flex-start;">
+          <div style="flex: 1; min-width: 300px;">
+            <img src="${product.image}" alt="${product.name}" style="width: 100%; border-radius: 15px; box-shadow: 0 4px 15px rgba(0,0,0,0.1);">
+          </div>
+          <div style="flex: 1; min-width: 300px;">
+            <h1 style="font-size: 32px; margin-bottom: 10px;">${product.name}</h1>
+            <p style="color: #64748b; font-size: 18px;">Thương hiệu: <strong>${product.brand}</strong></p>
+            <h2 style="color: #dc2626; font-size: 28px; margin: 20px 0;">${product.price.toLocaleString()}đ</h2>
+            <p style="line-height: 1.6; color: #475569; margin-bottom: 30px;">${product.desc}</p>
+            
+            <div style="display: flex; gap: 15px;">
+              <button onclick="handlePurchase(${product.id}, 'cart')" class="add-btn" 
+                      style="flex: 1; padding: 15px; background: #38bdf8; color: white; border: none; border-radius: 8px; cursor: pointer; font-weight: bold;">
+                THÊM VÀO GIỎ
+              </button>
+              
+              <button onclick="handlePurchase(${product.id}, 'buy')" class="add-btn" 
+                      style="flex: 1; padding: 15px; background: #1e293b; color: white; border: none; border-radius: 8px; cursor: pointer; font-weight: bold;">
+                MUA NGAY
+              </button>
+            </div>
+            
+            <div style="margin-top: 20px;">
+              <a href="index.html" style="text-decoration: none; color: #64748b; font-size: 14px;">← Tiếp tục mua sắm</a>
+            </div>
+          </div>
+        </div>
+      `;
+    }
+  });
+
+  // Hàm xử lý chung cho cả 2 nút
+  function handlePurchase(id, type) {
+    const userLogin = localStorage.getItem("userLogin");
+
+    if (!userLogin) {
+      alert("Vui lòng đăng nhập để thực hiện thao tác này!");
+      window.location.href = "login.html";
+      return;
+    }
+
+    // Gọi hàm addToCart có sẵn trong script.js
+    addToCart(id);
+
+    if (type === 'buy') {
+      window.location.href = "cart.html"; // Nếu là "Mua ngay" thì chuyển thẳng tới giỏ hàng
+    }
+  }
+</script>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-container">
+        <div class="footer-col">
+          <h3>⚡ SHOE-DEV</h3>
+          <p class="footer-desc">
+            Chuyên cung cấp các dòng giày sneaker chính hãng, phong cách và chất
+            lượng hàng đầu. Nâng niu bàn chân Việt.
+          </p>
+          <div class="social-links">
+            <a href="#">FB</a>
+            <a href="#">IG</a>
+            <a href="#">YT</a>
+          </div>
+        </div>
+
+        <div class="footer-col">
+          <h3>Hỗ trợ khách hàng</h3>
+          <ul>
+            <li><a href="#">Hướng dẫn chọn size</a></li>
+            <li><a href="#">Chính sách đổi trả</a></li>
+            <li><a href="#">Thanh toán & Vận chuyển</a></li>
+            <li><a href="#">Bảo mật thông tin</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h3>Liên hệ</h3>
+          <p>📍 Địa chỉ: 123 Đường ABC, Quận 1, TP.HCM</p>
+          <p>📞 Hotline: 0909.xxx.xxx</p>
+          <p>✉️ Email: contact@shoedev.com</p>
+          <div class="student-info">
+            <span>Sinh viên: Vũ Thái Huy</span> <br />
+            <span>MSSV: 24N01214</span>
+          </div>
+          <div class="student-info">
+            <span>Sinh viên: Đỗ Lâm Trường</span> <br />
+            <span>MSSV: 24N01211</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer-bottom">© 2024 SHOE-DEV. All rights reserved.</div>
+    </footer>
+
+    <script src="../js/script.js"></script>
+    <script>
+      renderDetailPage();
+    </script>
+    
+  </body>
+</html>

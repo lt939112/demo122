@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Giỏ hàng - SHOE-DEV</title>
+    <link rel="stylesheet" href="../style.css" />
+  </head>
+  <body>
+    <header class="header-container">
+      <div class="logo" onclick="location.href = 'index.html'">⚡ SHOE-DEV</div>
+
+      <nav class="main-menu">
+        <a href="index.html">Tất cả</a>
+        <a href="index.html">Nike</a>
+        <a href="index.html">Adidas</a>
+        <a href="index.html">Jordan</a>
+        <a href="index.html">Puma</a>
+      </nav>
+
+      <div class="nav-actions">
+        <a href="cart.html" style="color: #38bdf8">🛒</a>
+        <a href="login.html">Đăng nhập</a>
+      </div>
+    </header>
+
+    <main>
+      <section class="content">
+        <h2>Giỏ hàng của bạn</h2>
+        <div class="cart-container">
+          <ul id="cartList"></ul>
+
+          <div id="cartActions" class="cart-actions" style="display: none">
+            <button class="checkout-btn" onclick="checkout()">
+              Thanh toán ngay
+            </button>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-container">
+        <div class="footer-col">
+          <h3>⚡ SHOE-DEV</h3>
+          <p class="footer-desc">
+            Chuyên cung cấp các dòng giày sneaker chính hãng, phong cách và chất
+            lượng hàng đầu.
+          </p>
+          <div class="social-links">
+            <a href="#">FB</a><a href="#">IG</a><a href="#">YT</a>
+          </div>
+        </div>
+
+        <div class="footer-col">
+          <h3>Hỗ trợ khách hàng</h3>
+          <ul>
+            <li><a href="#">Hướng dẫn chọn size</a></li>
+            <li><a href="#">Chính sách đổi trả</a></li>
+            <li><a href="#">Thanh toán & Vận chuyển</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h3>Liên hệ</h3>
+          <p>📍 123 Đường ABC, Quận 1, TP.HCM</p>
+          <p>📞 0909.xxx.xxx</p>
+          <div class="student-info">
+            <span>Sinh viên: Vũ Thái Huy</span> <br />
+            <span>MSSV: 24N01214</span>
+          </div>
+          <div class="student-info">
+            <span>Sinh viên: Đỗ Lâm Trường</span> <br />
+            <span>MSSV: 24N01211</span>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">© 2024 SHOE-DEV. All rights reserved.</div>
+    </footer>
+
+    <script src="../js/cart.js"></script>
+  </body>
+</html>
